@@ -24,9 +24,7 @@ struct SearchPlaceholderView: View {
                     Text(text)
                         .font(.title2)
                 }
-
             }
-            
         }
     }
 }
