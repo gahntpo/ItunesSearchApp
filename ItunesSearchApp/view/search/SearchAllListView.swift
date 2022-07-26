@@ -17,69 +17,69 @@ struct SearchAllListView: View {
         ScrollView {
             LazyVStack(spacing: 5) {
                 
-                HStack {
-                    Text("Songs")
-                        .font(.title2)
-                    Spacer()
-                    
-                    NavigationLink {
+                if songListViewModel.songs.count > 0 {
+                    SectionHeaderView(title: "Songs") {
                         SongListView(viewModel: songListViewModel)
-                    } label: {
-                        HStack {
-                            Text("See all")
-                            Image(systemName: "chevron.right")
-                        }
                     }
-                }
-                .padding(.horizontal)
-                
-                SongSectionView(songs: songListViewModel.songs)
-                
-                Divider()
-                    .padding(.bottom)
-                
-                HStack {
-                    Text("Albums")
-                        .font(.title2)
-                    Spacer()
+                    .padding(.top)
                     
-                    NavigationLink {
+                    SongSectionView(songs: songListViewModel.songs)
+                    
+                    Divider()
+                        .padding(.bottom)
+                }
+                
+                if albumListViewModel.albums.count > 0 {
+                    SectionHeaderView(title: "Albums") {
                         AlbumListView(viewModel: albumListViewModel)
-                    } label: {
-                        HStack {
-                            Text("See all")
-                            Image(systemName: "chevron.right")
-                        }
                     }
-                }
-                .padding(.horizontal)
-                
-                AlbumSectionView(albums: albumListViewModel.albums)
-                
-                Divider()
-                    .padding(.bottom)
-                
-                HStack {
-                    Text("Movies")
-                        .font(.title2)
-                    Spacer()
                     
-                    NavigationLink {
-                        MovieListView(viewModel: movieListViewModel)
-                    } label: {
-                        HStack {
-                            Text("See all")
-                            Image(systemName: "chevron.right")
-                        }
-                    }
+                    AlbumSectionView(albums: albumListViewModel.albums)
+                    
+                    Divider()
+                        .padding(.bottom)
                 }
-                .padding(.horizontal)
-
-                MovieSectionView(movies: movieListViewModel.movies)
+                
+                if movieListViewModel.movies.count > 0 {
+                    SectionHeaderView(title: "Movies") {
+                        MovieListView(viewModel: movieListViewModel)
+                    }
+                    
+                    MovieSectionView(movies: movieListViewModel.movies)
+                }
             }
         }
     }
 }
+
+
+struct SectionHeaderView<Destination>: View where Destination : View {
+    
+    let title: String
+    let destination:  () -> Destination
+    
+    init(title: String, @ViewBuilder destination: @escaping () -> Destination) {
+        self.title = title
+        self.destination = destination
+    }
+    
+    var body: some View {
+        HStack {
+            Text(title)
+                .font(.title2)
+            Spacer()
+            
+            NavigationLink(destination: destination) {
+                HStack {
+                    Text("See all")
+                    Image(systemName: "chevron.right")
+                }
+            }
+        }
+        .padding(.horizontal)
+    }
+}
+
 
 struct SearchAllListView_Previews: PreviewProvider {
     static var previews: some View {
