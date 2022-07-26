@@ -29,14 +29,20 @@ class AlbumListViewModel: ObservableObject {
     init() {
 
         $searchTerm
+            .removeDuplicates()
             .dropFirst()
             .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
             .sink { [weak self] term in
-                self?.state = .good
-                self?.albums = []
+                self?.clear()
                 self?.fetchAlbums(for: term)
             }.store(in: &subscriptions)
         
+    }
+    
+    func clear() {
+        state = .good
+        albums = []
+        page = 0
     }
     
     func loadMore() {
@@ -64,7 +70,7 @@ class AlbumListViewModel: ObservableObject {
                         }
                         self?.page += 1
                         self?.state = (results.results.count == self?.limit) ? .good : .loadedAll
-                        print("fetched \(results.resultCount)")
+                        print("fetched albums \(results.resultCount)")
                         
                     case .failure(let error):
                         print("error loading albums: \(error)")

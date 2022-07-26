@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 class SongListViewModel: ObservableObject {
     
@@ -17,6 +18,31 @@ class SongListViewModel: ObservableObject {
     
     let limit: Int = 20
     var page: Int = 0
+    
+    var subscriptions = Set<AnyCancellable>()
+    
+    init() {
+
+        $searchTerm
+            .removeDuplicates()
+            .dropFirst()
+            .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
+            .sink { [weak self] term in
+                self?.clear()
+                self?.fetchSongs(for: term)
+            }.store(in: &subscriptions)
+        
+    }
+    
+    func clear() {
+       state = .good
+       songs = []
+        page = 0
+    }
+    
+    func loadMore() {
+        fetchSongs(for: searchTerm)
+    }
     
     func fetchSongs(for searchTerm: String) {
         
@@ -39,10 +65,10 @@ class SongListViewModel: ObservableObject {
                         }
                         self?.page += 1
                         self?.state = (results.results.count == self?.limit) ? .good : .loadedAll
-                        print("fetched \(results.resultCount)")
+                        print("fetched songs \(results.resultCount)")
                         
                     case .failure(let error):
-                        self?.state = .error("Could not load: \(error.localizedDescription)")
+                        print("Could not load: \(error)")
                         self?.state = .error(error.localizedDescription)
                 }
             }

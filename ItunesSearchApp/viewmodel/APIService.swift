@@ -8,11 +8,7 @@
 import Foundation
 
 
-enum EntityType: String {
-    case album
-    case song
-    case movie
-}
+
 
 class APIService {
     

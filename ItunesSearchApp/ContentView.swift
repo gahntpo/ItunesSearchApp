@@ -11,6 +11,11 @@ struct ContentView: View {
     var body: some View {
         TabView {
             
+            SearchView()
+                .tabItem {
+                    Label("Search", systemImage: "magnifyingglass")
+                }
+            
             AlbumSearchView()
                 .tabItem {
                     Label("Albums", systemImage: "music.note")
