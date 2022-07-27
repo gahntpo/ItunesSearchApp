@@ -18,8 +18,13 @@ struct SongSectionView: View {
             LazyHGrid(rows: rows, spacing: 15) {
                 
                 ForEach(songs) { song in
-                  SongRowView(song: song)
-                        .frame(width: 300)
+                    NavigationLink {
+                        SongDetailView(song: song)
+                    } label: {
+                        SongRowView(song: song)
+                            .frame(width: 300)
+                    }
+                    .buttonStyle(.plain)
                 }
             }
             .padding([.horizontal, .bottom])

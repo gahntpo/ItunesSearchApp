@@ -21,39 +21,54 @@ struct AlbumDetailView: View {
     
     var body: some View {
         VStack {
-            HStack(alignment: .bottom) {
-                ImageLoadingView(urlString: album.artworkUrl100, size: 100)
-                
-                VStack(alignment: .leading) {
-                    Text(album.collectionName)
-                        .font(.footnote)
-                        .foregroundColor(Color(.label))
-                    
-                    Text(album.artistName)
-                        .padding(.bottom, 5)
-                    
-                    Text(album.primaryGenreName)
-                    Text("\(album.trackCount) songs")
-                    Text("Released: \(formattedDate(value: album.releaseDate))")
-                    
-                }
-                .font(.caption)
-                .foregroundColor(.gray)
-                .lineLimit(1)
-               
-                Spacer(minLength: 20)
-                BuyButton(urlString: album.collectionViewURL,
-                          price: album.collectionPrice,
-                          currency: album.currency)
-                
-            }
-            .padding()
+            AlbumHeaderDetailView(album: album)
             
-            SongsForAlbumListView(songsViewModel: songsViewModel)
+            SongsForAlbumListView(songsViewModel: songsViewModel,
+                                  selectedSong: nil)
         }
         .onAppear {
             songsViewModel.fetch()
         }
+    }
+}
+
+struct AlbumHeaderDetailView: View {
+    
+    let album: Album
+    
+    var body: some View {
+        HStack(alignment: .bottom) {
+            ImageLoadingView(urlString: album.artworkUrl100, size: 100)
+            
+            VStack(alignment: .leading) {
+                Text(album.collectionName)
+                    .font(.footnote)
+                    .foregroundColor(Color(.label))
+                
+                Text(album.artistName)
+                    .padding(.bottom, 5)
+                
+                Text(album.primaryGenreName)
+                Text("\(album.trackCount) songs")
+                Text("Released: \(formattedDate(value: album.releaseDate))")
+                
+            }
+            .font(.caption)
+            .foregroundColor(.gray)
+            .lineLimit(1)
+           
+            Spacer(minLength: 20)
+            BuyButton(urlString: album.collectionViewURL,
+                      price: album.collectionPrice,
+                      currency: album.currency)
+            
+        }
+        .padding()
+        .background(
+            Color(.systemBackground)
+                .edgesIgnoringSafeArea(.top)
+                .shadow(radius: 5)
+        )
     }
     
     func formattedDate(value: String) -> String {
@@ -72,7 +87,6 @@ struct AlbumDetailView: View {
         
        return dateFormatter.string(from: date)
     }
-    
 }
 
 struct AlbumDetailView_Previews: PreviewProvider {
