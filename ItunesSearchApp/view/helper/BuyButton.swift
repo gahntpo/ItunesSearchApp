@@ -28,8 +28,8 @@ struct BuyButton_Previews: PreviewProvider {
         
         let example = Song.example()
         
-        BuyButton(urlString: example.previewURL,
-                  price: example.trackPrice,
-                  currency: example.currency)
+        return BuyButton(urlString: example.previewURL,
+                         price: example.trackPrice,
+                         currency: example.currency)
     }
 }
