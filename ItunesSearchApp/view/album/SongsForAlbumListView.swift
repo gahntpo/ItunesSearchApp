@@ -37,9 +37,12 @@ struct SongsForAlbumListView: View {
                             BuySongButton(urlString: song.previewURL,
                                           price: song.trackPrice,
                                           currency: song.currency)
+                            .padding(.trailing)
                         }
                         
                         Divider()
+                            .gridCellUnsizedAxes(.horizontal)
+                        
                     }
                 }
                 .padding([.vertical, .leading])
