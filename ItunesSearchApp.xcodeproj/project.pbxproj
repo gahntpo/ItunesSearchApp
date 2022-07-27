@@ -12,6 +12,8 @@
 		17292003289137FD00AAE90C /* SongsForAlbumListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17292002289137FD00AAE90C /* SongsForAlbumListView.swift */; };
 		1729200528914D4B00AAE90C /* SongDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1729200428914D4B00AAE90C /* SongDetailView.swift */; };
 		1729200728914E7100AAE90C /* AlbumForSongViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1729200628914E7100AAE90C /* AlbumForSongViewModel.swift */; };
+		173727A828916B5600A48F74 /* Simulator Screen Recording - iPhone 13 - 2022-07-27 at 15.41.14.gif in Resources */ = {isa = PBXBuildFile; fileRef = 173727A728916B5600A48F74 /* Simulator Screen Recording - iPhone 13 - 2022-07-27 at 15.41.14.gif */; };
+		173727AA28916BBE00A48F74 /* iTunes_Search_App screenshots.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 173727A928916BBE00A48F74 /* iTunes_Search_App screenshots.pdf */; };
 		17DCA95E288E999E00F20AD8 /* ItunesSearchAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DCA95D288E999E00F20AD8 /* ItunesSearchAppApp.swift */; };
 		17DCA960288E999E00F20AD8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DCA95F288E999E00F20AD8 /* ContentView.swift */; };
 		17DCA962288E999F00F20AD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17DCA961288E999F00F20AD8 /* Assets.xcassets */; };
@@ -51,6 +53,8 @@
 		17292002289137FD00AAE90C /* SongsForAlbumListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsForAlbumListView.swift; sourceTree = "<group>"; };
 		1729200428914D4B00AAE90C /* SongDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailView.swift; sourceTree = "<group>"; };
 		1729200628914E7100AAE90C /* AlbumForSongViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumForSongViewModel.swift; sourceTree = "<group>"; };
+		173727A728916B5600A48F74 /* Simulator Screen Recording - iPhone 13 - 2022-07-27 at 15.41.14.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Simulator Screen Recording - iPhone 13 - 2022-07-27 at 15.41.14.gif"; sourceTree = "<group>"; };
+		173727A928916BBE00A48F74 /* iTunes_Search_App screenshots.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "iTunes_Search_App screenshots.pdf"; sourceTree = "<group>"; };
 		17DCA95A288E999E00F20AD8 /* ItunesSearchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ItunesSearchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17DCA95D288E999E00F20AD8 /* ItunesSearchAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesSearchAppApp.swift; sourceTree = "<group>"; };
 		17DCA95F288E999E00F20AD8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -96,9 +100,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		173727A628916B4900A48F74 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				173727A728916B5600A48F74 /* Simulator Screen Recording - iPhone 13 - 2022-07-27 at 15.41.14.gif */,
+				173727A928916BBE00A48F74 /* iTunes_Search_App screenshots.pdf */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
 		17DCA951288E999E00F20AD8 = {
 			isa = PBXGroup;
 			children = (
+				173727A628916B4900A48F74 /* images */,
 				17DCA95C288E999E00F20AD8 /* ItunesSearchApp */,
 				17DCA95B288E999E00F20AD8 /* Products */,
 			);
@@ -294,7 +308,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				17DCA965288E999F00F20AD8 /* Preview Assets.xcassets in Resources */,
+				173727AA28916BBE00A48F74 /* iTunes_Search_App screenshots.pdf in Resources */,
 				17DCA962288E999F00F20AD8 /* Assets.xcassets in Resources */,
+				173727A828916B5600A48F74 /* Simulator Screen Recording - iPhone 13 - 2022-07-27 at 15.41.14.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
