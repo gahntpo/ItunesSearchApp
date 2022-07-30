@@ -15,8 +15,6 @@ class MovieListViewModel: ObservableObject {
     @Published var state: FetchState = .good
     
     private let service = APIService()
-
-    let defaultLimits = 50
     
     var subscriptions = Set<AnyCancellable>()
     
@@ -52,10 +50,10 @@ class MovieListViewModel: ObservableObject {
                     case .success(let results):
                         self?.movies = results.results
                 
-                        if results.resultCount == self?.defaultLimits {
-                            self?.state = .good
+                        if results.resultCount == 0 {
+                            self?.state = .noResults
                         } else {
-                            self?.state = .loadedAll
+                            self?.state = .good
                         }
                       
                         print("fetched movies \(results.resultCount) - \(results.results.count)")

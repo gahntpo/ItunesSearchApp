@@ -17,22 +17,8 @@ struct MovieListView: View {
                 MovieRowView(movie: movie)
             }
             
-            switch viewModel.state {
-                case .good:
-                    Color.clear
-                        .onAppear {
-                            viewModel.loadMore()
-                        }
-                case .isLoading:
-                    ProgressView()
-                        .progressViewStyle(.circular)
-                        .frame(maxWidth: .infinity)
-                case .loadedAll:
-                    EmptyView()
-                case .error(let message):
-                    Text(message)
-                        .foregroundColor(.pink)
-            }
+            ListPlaceholderRowView(state: viewModel.state,
+                                   loadMore: viewModel.loadMore)
         }
         .listStyle(.plain)
         
